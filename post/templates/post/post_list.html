@@ -1,0 +1,9 @@
+{% for post in posts %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.description }}</p>
+    <p><i>Автор: {{ post.author }}</i></p>
+    <a href="{% url 'post_detail' post.id %}">Подробнее</a>
+    <a href="{% url 'post_delete' post.id %}">Удалить</a>
+{% endfor %}
+<a href="{% url 'post_create' %}">Добавить пост</a>
+ 
