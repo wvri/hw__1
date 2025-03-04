@@ -1,0 +1,9 @@
+<h1>Список Todo</h1>
+<ul>
+    {% for todo_list in todo_lists %}
+        <li><a href="{% url 'todo_list_detail' todo_list.id %}">{{ todo_list.title }}</a></li>
+    {% empty %}
+        <li>Нет списков задач.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'todo_list_add' %}">Добавить новый список</a>
