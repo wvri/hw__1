@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h2>{{ todo_list.title }}</h2>
+<p>{{ todo_list.description }}</p>
+
+<h3>Задачи:</h3>
+<ul>
+    {% for todo in todos %}
+        <li>
+            {{ todo.title }} - {{ todo.due_date }} - {{ todo.status|yesno:"✅,❌" }}
+            <a href="{% url 'todo_edit' todo.id %}">✏️</a>
+            <a href="{% url 'todo_delete' todo.id %}">🗑️</a>
+        </li>
+    {% empty %}
+        <p>Нет задач</p>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'todo_list' %}">Назад</a>
+{% endblock %}
